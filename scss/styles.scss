@@ -1,0 +1,157 @@
+$black:#151414;
+$gray:#8C8C8C;
+$white:#FDFDFD;
+$maincolor:#E26D46;
+
+body {
+	width: 100%;
+	height: 500vh;
+	background-image: linear-gradient(0deg, $maincolor 0%, lighten($maincolor,5) 100%);
+	background-repeat: no-repeat;
+	font-family: 'Roboto', sans-serif;
+}
+
+.header {
+	position: relative;
+	width: 100%;
+	font-size: 18px;
+	background-color: $white;
+	.shell {
+		max-width: 1600px;
+		margin: auto;
+		a {
+			display: inline-block;
+			text-decoration: none;
+			color: $black;
+		}
+		.logo {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			padding-left: 120px;
+			font-size: 36px;
+			letter-spacing: 2px;
+			font-family: 'Pacifico', cursive;
+			z-index: 99;
+		}
+		.btn-menu {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			font-size: 30px;
+			display: none;
+			z-index: 99;
+		}
+		.btn-search {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			margin-right: 120px;
+			font-size: 30px;
+			z-index: 89;
+		}
+		nav {
+			position: relative;
+			text-align: center;
+			padding: 35px 0 50px;
+			z-index: 90;
+			li {
+				display: inline-block;
+				padding: 18px 18px 0px;
+				a {
+					text-transform: uppercase;
+					font-weight: 600;
+					letter-spacing: 1px;
+					&:hover {
+						color: $maincolor;
+					}
+				}
+			}
+		}
+	}
+}
+section {
+	text-align: center;
+	h1 {
+		margin: 0;
+		padding: 350px 15px;
+	    letter-spacing: 1px;
+	    text-transform: capitalize;
+	    color: $white;
+	    letter-spacing: 1px;
+		span {
+			font-style: italic;
+			font-size: 18px;
+		}
+	}
+}
+@media only screen and (max-width: 1000px) {
+	body {
+		&.show-nav {
+			overflow: hidden;
+			.logo, .btn-menu {
+				color:$white;
+			}
+		}
+	}
+	.header {
+		position: fixed;
+		transition: transform .25s linear;
+		&.nav-up {
+			transform: translateY(-80px);
+		}
+		&.nav-down {
+			transform: translateY(0px);
+		}
+		.shell {
+			min-height: 80px;
+			.logo {
+				padding-left: 20px;
+				font-size: 32px;
+			}
+			.btn-menu {
+				margin-right: 20px;
+				font-size: 24px;
+				display: inline-block;
+			}
+			.btn-search {
+				margin-right: 60px;
+				font-size: 24px;
+			}
+			nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100vh;
+				text-align: center;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: $maincolor;
+				opacity: 0;
+				transition: opacity .5s cubic-bezier(.01,1.02,.14,.98);
+				&.open {
+					opacity: 1;
+				}
+				li {
+					display: block;
+					padding: 18px 0px;
+					a{
+						color: $white;
+						&:hover {
+							color: $black;
+						}
+					}
+				}
+			}
+		}
+	}
+	section {
+		padding-top: 80px;
+	}
+}
